@@ -41,7 +41,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/ThatGuyChike/age-calculator)
-- Live Site URL: [Vercel]([https://your-live-site-url.com](https://age-calculator-theta-orpin.vercel.app/))
+- Live Site URL: [Vercel](https://your-live-site-url.com](https://age-calculator-theta-orpin.vercel.app)
 
 ## My Process
 
