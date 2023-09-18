@@ -8,11 +8,11 @@ function AgeDisplay() {
 
 
   return (
-    <div className='derived-age'>
+    <section className='derived-age'>
       <div><span className='derived-figure'>{age.year !== '' ? display.year : '--'}</span> years</div>
       <div><span className='derived-figure'>{age.month !== '' ? display.month : '--'}</span> months</div>
       <div><span className='derived-figure'>{age.day !== '' ? display.day : '--'}</span> days</div>
-    </div>
+    </section>
   )
 }
 

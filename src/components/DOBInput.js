@@ -16,7 +16,7 @@ function DOBInput() {
   }
 
   return (
-    <div className='inputs'>
+    <section className='inputs'>
       <span>
         <label htmlFor="day" style={isValidDay ? null : invalidLabel}>DAY</label>
         <input type="text" name="day" id="day" placeholder='DD' style={isValidDay ? null : invalidInput} onChange={inputChanged} onFocus={inputTouched} />
@@ -32,7 +32,7 @@ function DOBInput() {
         <input type="text" name="year" placeholder='YYYY' id="year" style={isValidYear ? null : invalidInput} onChange={inputChanged} onFocus={inputTouched} />
         {touched.year && errors.year && <p className='error'>{errors.year}</p>}
       </span>
-    </div>
+    </section>
   )
 }
 
