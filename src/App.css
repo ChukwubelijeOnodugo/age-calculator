@@ -1,0 +1,102 @@
+.App {
+  background: var(--lgrey);
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  max-height: auto;
+}
+
+.App main {
+  background: var(--white);
+  border-radius: 3rem 3rem 20rem 3rem;
+  padding: 5.5rem 5.5rem;
+  width: 70rem;
+}
+
+.divider {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.divider::before {
+  content: '';
+  height: 2px;
+  background: var(--purple);
+  align-self: center;
+  flex-grow: 2;
+}
+
+.convert-button {
+  border-radius: 50%;
+  justify-self: flex-end;
+  font-size: 3rem;
+  font-weight: lighter;
+  color: var(--white);
+  background: var(--purple);
+  border: none;
+  width: 60px;
+  height: 60px;
+}
+
+.convert-button:hover {
+  background: var(--oblack);
+}
+
+.convert-button:disabled {
+  opacity: 0.2;
+}
+
+:root {
+  font-size: 10px;
+  --purple: hsl(259, 100%, 65%);
+  --lred: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --owhite: hsl(0, 0%, 94%);
+  --lgrey: hsl(0, 0%, 86%);
+  --sgrey: hsl(0, 1%, 44%);
+  --oblack: hsl(0, 0%, 8%);
+}
+
+@media screen and (min-width: 841px) and (max-width: 1000px) {
+  .App main {
+    width: 65rem;
+    padding: 3.5rem 3.5rem;
+    margin: 1.5rem 1.5rem;
+    border-radius: 2.5rem 2.5rem 17rem 2.5rem;
+  }
+}
+
+@media screen and (min-width: 681px) and (max-width: 840px) {
+  .App main {
+    width: 58rem;
+    padding: 3.5rem 3.5rem;
+    margin: 1.5rem 1.5rem;
+    border-radius: 2rem 2rem 14rem 2rem;
+  }
+}
+
+@media screen  and (min-width: 601px) and (max-width: 680px) { 
+  .App main {
+    width: 50rem;
+    padding: 2.5rem 2.5rem;
+    margin: 1.5rem 1.5rem;
+    border-radius: 2rem 2rem 12rem 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) { 
+  .App main {
+    width: 80%;
+    padding: 2.5rem 2.5rem;
+    margin-top: -10rem;
+    border-radius: 2rem 2rem 9rem 2rem;
+  }
+
+  .divider::after {
+    content: '';
+    height: 2px;
+    background: var(--purple);
+    align-self: center;
+    flex-grow: 2;
+  }
+}

@@ -1,0 +1,15 @@
+.derived-age {
+    font-size: 6rem;
+    font-style: italic;
+}
+
+.derived-figure {
+    color: var(--purple);
+}
+
+@media screen and (max-width: 600px) {
+    .derived-age {
+        font-size: 4rem;
+        font-style: italic;
+    }
+}
