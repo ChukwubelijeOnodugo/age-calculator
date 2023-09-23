@@ -139,10 +139,37 @@ export const AgeProvider = ({ children }) => {
         setDateOfBirth({ ...dateOfBirth, [e.target.name]: e.target.value })
     }
 
+    function isValidDate(year, month, day) {
+        if (year === '' || month === '' || day === '') {
+            return true;
+        }
+
+        let userDate = new Date(year, month - 1, day);
+
+        if (userDate.getFullYear() != year || userDate.getMonth() != month - 1 || userDate.getDate() != day) {
+            return false
+        }
+
+        return true
+    }
+
+    function isAFutureDay(year, month, day) {
+        let userDate = new Date(year, month - 1, day);
+        let today = new Date();
+
+        if (userDate > today) {
+            return true
+        }
+
+        return false;
+    }
+
     function validateDay() {
         const month = parseInt(dateOfBirth.month);
         const day = parseInt(dateOfBirth.day);
         // console.log('Hit');
+        console.log(dateOfBirth)
+        console.log(isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day))
 
         if (dateOfBirth.day === '' && touched.day) {
             setErrors({ ...errors, day: 'This field is required' })
@@ -150,11 +177,11 @@ export const AgeProvider = ({ children }) => {
             setErrors({ ...errors, day: 'Must be a number' })
         } else if (day < 1 || day > 31) {
             setErrors({ ...errors, day: 'Must be a valid day' })
-        } else if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) {
+        } else if (!isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
             setErrors({ ...errors, day: 'Must be a valid date' })
-        } else if (month === 2 && day > 28) {
-            setErrors({ ...errors, day: 'Must be a valid date' })
-        } else {
+        } else if (isAFutureDay(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
+            setErrors({ ...errors, day: 'Must be in the past', month: '' })
+        } else if (isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
             setErrors({ ...errors, day: '' })
         }
     }
@@ -170,11 +197,11 @@ export const AgeProvider = ({ children }) => {
             setErrors({ ...errors, month: 'Must be a number' })
         } else if (month < 1 || month > 12) {
             setErrors({ ...errors, month: 'Must be a valid month' })
-        } else if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) {
+        } else if (!isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
             setErrors({ ...errors, day: 'Must be a valid date', month: '' })
-        } else if (month === 2 && day > 28) {
-            setErrors({ ...errors, day: 'Must be a valid date', month: '' })
-        } else {
+        } else if (isAFutureDay(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
+            setErrors({ ...errors, day: '', month: 'Must be in the past' })
+        } else if (isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
             setErrors({ ...errors, month: '', day: '' })
         }
     }
@@ -191,6 +218,8 @@ export const AgeProvider = ({ children }) => {
             setErrors({ ...errors, year: 'Must be a number' })
         } else if (year > currentYear) {
             setErrors({ ...errors, year: 'Must be in the past' })
+        } else if (isAFutureDay(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day)) {
+            setErrors({ ...errors, day: 'Must be in the past', month: '' })
         } else {
             setErrors({ ...errors, year: '' })
         }
@@ -217,6 +246,10 @@ export const AgeProvider = ({ children }) => {
         let daysLived = today.getDate() - dob.getDate();
 
         let dayTotal = today.getMonth() - 1 === 1 ? 28 : today.getMonth() - 1 === 3 || today.getMonth() - 1 === 5 || today.getMonth() - 1 === 8 || today.getMonth() - 1 === 10 ? 30 : 31;
+
+        if (today.getFullYear() % 4 === 0 && today.getMonth() - 1 === 1) {
+            dayTotal = 29
+        }
 
         if (monthsLived < 0) {
             yearsLived--;
