@@ -168,8 +168,8 @@ export const AgeProvider = ({ children }) => {
         const month = parseInt(dateOfBirth.month);
         const day = parseInt(dateOfBirth.day);
         // console.log('Hit');
-        console.log(dateOfBirth)
-        console.log(isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day))
+        // console.log(dateOfBirth)
+        // console.log(isValidDate(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day))
 
         if (dateOfBirth.day === '' && touched.day) {
             setErrors({ ...errors, day: 'This field is required' })
