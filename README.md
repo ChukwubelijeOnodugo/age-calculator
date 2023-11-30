@@ -40,7 +40,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub](https://github.com/ThatGuyChike/age-calculator)
+- Solution URL: [GitHub](https://github.com/ChukwubelijeOnodugo/age-calculator)
 - Live Site URL: [Vercel](https://age-calculator-theta-orpin.vercel.app)
 
 ## My Process
